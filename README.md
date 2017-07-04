@@ -1,5 +1,5 @@
 ##Heroku Deployed Site
-- https://capstone-test-ps.herokuapp.com/
+- https://fs-whats-on.herokuapp.com/
 
 ##Helpful Links
 - (http://www.rtcmulticonnection.org/docs/)
