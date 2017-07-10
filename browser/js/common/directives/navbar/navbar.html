@@ -1,32 +1,29 @@
 <div class="twoNavs">
     <nav class="navbar navbar-static-top">
-        <div class="container">
+
+        <ul class="topnav" id="myTopnav">
             <div class="navbar-header">
-                <a ui-sref-active="active" ui-sref="home"><fullstack-logo></fullstack-logo><a>
-            </div>
-            <ul class="nav navbar-nav">
-                    <a ui-sref-active="active" ui-sref="home" id="site-name">what's on</a>
-            </ul>
 
-            <button ng-show="!user" ui-sref="login" class="login-button shadow">Login</button>
-            <div ng-show="user" class="welcome">
-                <a ui-sref='user'><span class='profile'>Welcome, {{ user.email }}!</span></a>
-                <a ng-click="logout()">Logout</a>
+                <a ui-sref-active="active" ui-sref="home" id="site-name"><img src="https://cdn3.iconfinder.com/data/icons/internet-3-4/128/103-128.png">what's on</a> 
+
+                <li class="icon">
+                    <a href="javascript:void(0);" onclick="navToggle()">&#9776;</a>
+                </li>                
+                
             </div>
-        </div>
+            <div class="container-fluid">
+                <div class="container">
+                    <button ng-show="!user" ui-sref="login" class="login-button shadow">Login</button>
+                    <div ng-show="user" class="welcome">
+                        <a ui-sref='user'><span class='profile'>Welcome, {{ user.email }}!</span></a>
+                        <a ng-click="logout()">Logout</a>
+                    </div>   
+                </div>
+
+                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+                </li>                 
+            </div>        
+        </ul>
     </nav>
-
-    <ul class="topnav" id="myTopnav">
-        <li class="icon">
-            <a href="javascript:void(0);" onclick="navToggle()">&#9776;</a>
-        </li>
-
-        <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-            <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-        </li>
-            <ng-form name="broadcastJoin" id="joinInput" novalidate>
-                <input type="text" required onClick="this.select();" ng-model="broadcast.channelID" placeholder="Input Room Id Here">
-                <input type="submit" value="Join Broadcast" class='btn btn-primary' id="navButtonDown" ng-click="joinBroadcast(broadcast)">
-            </ng-form>
-    </ul>
 </div>
